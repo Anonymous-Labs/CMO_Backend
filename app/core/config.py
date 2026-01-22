@@ -14,6 +14,11 @@ class Settings(BaseSettings):
     GEMINI_TEXT_MODEL: str = "gemini-2.0-flash"
     GEMINI_IMAGE_MODEL: str = "gemini-2.5-flash-image"
 
+    # Meta/Facebook App Configuration for Instagram
+    META_APP_ID: str = ""
+    META_APP_SECRET: str = ""
+    META_REDIRECT_URI: str = "http://localhost:3000/instagram"
+
     # BACKEND_CORS_ORIGINS is a JSON-formatted list of origins
     # e.g: '["http://localhost:3000", "http://localhost:8080"]'
     BACKEND_CORS_ORIGINS: List[AnyHttpUrl] = [

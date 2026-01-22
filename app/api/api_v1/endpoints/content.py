@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, List
 
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
@@ -55,5 +55,28 @@ def generate_content(
     )
 
     return result
+
+
+@router.get("/", response_model=List[dict])
+def get_content(
+    *,
+    db: Session = Depends(deps.get_db),
+    current_user: models.User = Depends(deps.get_current_user),
+) -> Any:
+    """Get all generated content for the current user"""
+    # For now, return empty list - implement when database models are ready
+    return []
+
+
+@router.delete("/{content_id}")
+def delete_content(
+    *,
+    db: Session = Depends(deps.get_db),
+    content_id: int,
+    current_user: models.User = Depends(deps.get_current_user),
+) -> Any:
+    """Delete generated content"""
+    # For now, just return success - implement when database models are ready
+    return {"message": "Content deleted successfully"}
 
 
