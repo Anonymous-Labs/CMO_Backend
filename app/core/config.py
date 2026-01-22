@@ -9,6 +9,11 @@ class Settings(BaseSettings):
     SECRET_KEY: str = "your-secret-key-here-change-in-production"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24 * 8  # 8 days
 
+    # Gemini AI Configuration
+    GEMINI_API_KEY: str = ""
+    GEMINI_TEXT_MODEL: str = "gemini-2.0-flash"
+    GEMINI_IMAGE_MODEL: str = "gemini-2.5-flash-image"
+
     # BACKEND_CORS_ORIGINS is a JSON-formatted list of origins
     # e.g: '["http://localhost:3000", "http://localhost:8080"]'
     BACKEND_CORS_ORIGINS: List[AnyHttpUrl] = [
@@ -30,9 +35,7 @@ class Settings(BaseSettings):
     # Database
     SQLALCHEMY_DATABASE_URI: Optional[str] = "sqlite:///./cmo_ai.db"
 
-    class Config:
-        case_sensitive = True
-        env_file = ".env"
+    model_config = {"env_file": ".env", "case_sensitive": True}
 
 
 settings = Settings()

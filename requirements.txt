@@ -4,6 +4,7 @@ sqlalchemy==2.0.46
 alembic==1.18.1
 python-jose[cryptography]==3.5.0
 passlib[bcrypt]>=1.7.4
+google-generativeai==0.8.5
 python-multipart==0.0.21
 python-decouple==3.8
 pydantic[email]==2.12.5

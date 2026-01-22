@@ -9,6 +9,11 @@ from app.api import deps
 router = APIRouter()
 
 
+@router.get("/me", response_model=schemas.User)
+def read_current_user(current_user: models.User = Depends(deps.get_current_user)) -> Any:
+    return current_user
+
+
 @router.get("/", response_model=List[schemas.User])
 def read_users(
     db: Session = Depends(deps.get_db),
@@ -18,7 +23,7 @@ def read_users(
     """
     Retrieve users.
     """
-    users = crud.user.get_multi(db, skip=skip, limit=limit)
+    users = crud.user.user.get_multi(db, skip=skip, limit=limit)
     return users
 
 
@@ -31,13 +36,13 @@ def create_user(
     """
     Create new user.
     """
-    user = crud.user.get_by_email(db, email=user_in.email)
+    user = crud.user.user.get_by_email(db, email=user_in.email)
     if user:
         raise HTTPException(
             status_code=400,
             detail="The user with this username already exists in the system.",
         )
-    user = crud.user.create(db, obj_in=user_in)
+    user = crud.user.user.create(db, obj_in=user_in)
     return user
 
 
@@ -49,7 +54,7 @@ def read_user_by_id(
     """
     Get a specific user by id.
     """
-    user = crud.user.get(db, id=user_id)
+    user = crud.user.user.get(db, id=user_id)
     if not user:
         raise HTTPException(status_code=404, detail="User not found")
     return user
