@@ -11,8 +11,9 @@ class Settings(BaseSettings):
 
     # Gemini AI Configuration
     GEMINI_API_KEY: str = ""
-    GEMINI_TEXT_MODEL: str = "gemini-2.0-flash"
-    GEMINI_IMAGE_MODEL: str = "gemini-2.5-flash-image"
+    GEMINI_TEXT_MODEL: str = "gemini-1.5-flash-latest"  # Use -latest suffix for latest version
+    GEMINI_IMAGE_MODEL: str = "gemini-1.5-flash-latest"
+    GEMINI_VIDEO_MODEL: str = "gemini-1.5-flash-latest"
 
     # Meta/Facebook App Configuration for Instagram
     META_APP_ID: str = ""
@@ -39,6 +40,10 @@ class Settings(BaseSettings):
 
     # Database
     SQLALCHEMY_DATABASE_URI: Optional[str] = "sqlite:///./cmo_ai.db"
+    
+    # Logging
+    LOG_LEVEL: str = "INFO"
+    LOG_DIR: str = "logs"
 
     model_config = {"env_file": ".env", "case_sensitive": True}
 

@@ -2,6 +2,7 @@ from .token import Token, TokenData
 from .user import User, UserCreate, UserUpdate, UserInDB
 from .business import Business, BusinessCreate, BusinessUpdate, BusinessAsset
 from .content import ContentGenerateRequest, ContentGenerateResponse
+from .chat import ChatMessage, ChatRequest, ChatResponse
 
 __all__ = [
     "Token",
@@ -16,4 +17,7 @@ __all__ = [
     "BusinessAsset",
     "ContentGenerateRequest",
     "ContentGenerateResponse",
+    "ChatMessage",
+    "ChatRequest",
+    "ChatResponse",
 ]
